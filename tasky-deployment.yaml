@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tasky
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasky
+  template:
+    metadata:
+      labels:
+        app: tasky
+    spec:
+      containers:
+      - name: tasky
+        image: eoghandockerid/tasky:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: tasky-config
+        env:
+        - name: SECRET_KEY
+          value: secret123
+
+        securityContext:
+          runAsUser: 0  # running as root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tasky-service
+spec:
+  type: NodePort
+  selector:
+    app: tasky
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30000
+

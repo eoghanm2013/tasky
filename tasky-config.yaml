@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tasky-config
+data:
+  MONGODB_URI: mongodb://taskyuser:secret123@mongodb-service:27017/taskydb?authSource=admin
+  PORT: "8080" 
