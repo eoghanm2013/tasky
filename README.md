@@ -90,6 +90,13 @@ Find your Minikube IP with:
 minikube ip
 ```
 
+## Security Notice
+
+This repository is intended for local testing and demonstration purposes only.
+**Hardcoded secrets (such as database passwords) are present by design and should never be used in production environments.**
+
+If you receive secret scanning alerts from GitHub or GitGuardian, you can safely mark them as "used for testing/demo" or "won't fix" for this repository.
+
 ## Cleaning Up
 ```bash
 kubectl delete -f tasky-deployment.yaml
