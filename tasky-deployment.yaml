@@ -23,7 +23,7 @@ spec:
             name: tasky-config
         env:
         - name: SECRET_KEY
-          value: secret123
+          value: secret1233
 
         securityContext:
           runAsUser: 0  # running as root
